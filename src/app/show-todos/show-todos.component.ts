@@ -11,10 +11,10 @@ import { Todo } from '../todo'; // Correct import path
   styleUrls: ['./show-todos.component.css']
 })
 export class ShowTodosComponent {
-  todos: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
+  todos: Todo[] = JSON.parse(localStorage.getItem('list') || '[]');
 
   deleteItem(id: number) {
     this.todos = this.todos.filter(item => item.id !== id);
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    localStorage.setItem('list', JSON.stringify(this.todos));
   }
 }

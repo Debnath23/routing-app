@@ -4,5 +4,5 @@ import { ShowTodosComponent } from './show-todos/show-todos.component';
 
 export const routes: Routes = [
         { path: 'show-todos', component: ShowTodosComponent },
-        { path: 'second-component', component: SecondComponent },
+        { path: 'todos-done', component: SecondComponent },
 ];

@@ -3,17 +3,21 @@ import { Component } from "@angular/core";
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { Todo } from './todo';
+declare var localStorage: Storage;
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, FormsModule],
+  templateUrl: './app.component.html',
+  
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = "A Todo Project";
   todoValue: string = "";
-  list: Todo[] = JSON.parse(localStorage.getItem('list') || '[]');
+  list: Todo[] = []
 
   addItem() {
     if(this.todoValue.trim() !== "") {

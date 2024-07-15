@@ -12,14 +12,14 @@ import { Todo } from '../todo';
 })
 
 export class SecondComponent {
-  todos: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
+  todos: Todo[] = JSON.parse(localStorage.getItem('list') || '[]');
 
   deleteItem(id: number) {
     this.todos = this.todos.filter(item => item.id !== id);
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    localStorage.setItem('list', JSON.stringify(this.todos));
   }
 
   get doneTodos(): Todo[] {
-    return this.todos.filter(todo => todo.isDone);
+    return this.todos = this.todos.filter(todo => todo.isDone);
   }
 }
