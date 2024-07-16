@@ -1,6 +1,6 @@
 <main>
   <div class="flex flex-col justify-center items-center">
-    <div class="my-16">
+    <div class="my-20">
       <h1 class="text-white text-6xl">Todo List</h1>
     </div>
 
@@ -27,27 +27,17 @@
         <ul>
           <li
             *ngFor="let item of todos"
-            class="bg-white text-black p-2 rounded-lg mb-2 flex items-center justify-between"
+            class="bg-white text-black px-1.5 py-1 rounded-lg mb-2 flex items-center justify-between"
           >
-            <!-- <input
-              type="checkbox"
-              name="isDone"
-              [(ngModel)]="item.isDone"
-              ()="isDone(item.id)"
-              class="mr-4"
-            /> -->
-
             <button
-              name="isDone"
-              [(ngModel)]="item.isDone"
-              class="bg-red-300 text-white uppercase px-4 py-2 rounded-lg"
+              class="bg-green-400 text-slate-800 text-[14px] uppercase px-2 py-1 rounded-md mr-4"
               (click)="isDone(item.id)"
             >
-              Check
+              {{ item.isDone ? "Checked" : "Check" }}
             </button>
-            <span class="flex-grow text-slate-600">{{ item.value }}</span>
+            <span class="flex-grow">{{ item.value }}</span>
             <button
-              class="bg-red-500 text-white uppercase px-4 py-2 rounded-lg"
+              class="bg-red-500 text-white text-[14px] uppercase px-2 py-1 rounded-lg"
               (click)="deleteItem(item.id)"
             >
               Delete

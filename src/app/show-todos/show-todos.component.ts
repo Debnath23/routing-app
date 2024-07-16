@@ -8,13 +8,21 @@ import { Todo } from '../todo';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './show-todos.component.html',
-  styleUrls: ['./show-todos.component.css']
+  styleUrls: ['./show-todos.component.css'],
 })
 export class ShowTodosComponent {
   todos: Todo[] = JSON.parse(localStorage.getItem('todo') || '[]');
 
+  isDone(id: number) {
+    let doneTodo = this.todos.find((todo) => todo.id === id);
+    if (doneTodo) {
+      doneTodo.isDone = !doneTodo.isDone;
+    }
+    localStorage.setItem('todo', JSON.stringify(this.todos));
+  }
+
   deleteItem(id: number) {
-    this.todos = this.todos.filter(item => item.id !== id);
+    this.todos = this.todos.filter((item) => item.id !== id);
     localStorage.setItem('todo', JSON.stringify(this.todos));
   }
 }

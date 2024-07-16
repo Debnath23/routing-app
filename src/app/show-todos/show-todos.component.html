@@ -1,25 +1,30 @@
-<div class="container mx-auto max-w-sm mt-8">
-  <h2 class="text-2xl text-white mb-4 text-center">Todo List</h2>
-  <div class="list">
-    <ul>
-      <li
-        *ngFor="let item of todos"
-        class="bg-white text-black p-2 rounded-lg mb-2 flex items-center justify-between"
-      >
-        <input
-          type="checkbox"
-          name="isDone"
-          [(ngModel)]="item.isDone"
-          class="mr-4"
-        />
-        <span class="flex-grow">{{ item.value }}</span>
-        <button
-          class="bg-red-500 text-white uppercase px-4 py-2 rounded-lg"
-          (click)="deleteItem(item.id)"
+<div class="md:mt-[12.50%] mt-[50%] mx-auto max-w-sm">
+  <h2 class="text-3xl text-white mb-16 text-center">Todo List</h2>
+  <div class="px-8">
+    <ng-container *ngIf="todos.length > 0; else noTodos">
+      <ul>
+        <li
+          *ngFor="let item of todos"
+          class="bg-white text-black px-1.5 py-1.5 rounded-lg mb-2 flex items-center justify-between"
         >
-          Delete
-        </button>
-      </li>
-    </ul>
+          <button
+            class="bg-green-400 text-slate-800 text-[14px] uppercase px-2 py-1 rounded-md mr-4"
+            (click)="isDone(item.id)"
+          >
+            {{ item.isDone ? "Checked" : "Check" }}
+          </button>
+          <span class="flex-grow">{{ item.value }}</span>
+          <button
+            class="bg-red-500 text-white text-[14px] uppercase px-2 py-1 rounded-lg"
+            (click)="deleteItem(item.id)"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #noTodos>
+      <p class="text-white text-xl text-center">Opps! There are no todos.</p>
+    </ng-template>
   </div>
 </div>
