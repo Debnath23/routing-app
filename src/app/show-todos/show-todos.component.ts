@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Todo } from '../todo'; // Correct import path
+import { Todo } from '../todo';
 
 @Component({
   selector: 'app-show-todos',
@@ -11,10 +11,10 @@ import { Todo } from '../todo'; // Correct import path
   styleUrls: ['./show-todos.component.css']
 })
 export class ShowTodosComponent {
-  todos: Todo[] = JSON.parse(localStorage.getItem('list') || '[]');
+  todos: Todo[] = JSON.parse(localStorage.getItem('todo') || '[]');
 
   deleteItem(id: number) {
     this.todos = this.todos.filter(item => item.id !== id);
-    localStorage.setItem('list', JSON.stringify(this.todos));
+    localStorage.setItem('todo', JSON.stringify(this.todos));
   }
 }

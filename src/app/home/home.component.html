@@ -1,0 +1,50 @@
+<main>
+  <div class="flex flex-col justify-center items-center">
+    <div class="my-16">
+      <h1 class="text-white text-6xl">Todo List</h1>
+    </div>
+
+    <div class="max-w-sm">
+      <p class="text-2xl text-white text-center mb-6">Add a todo...</p>
+      <br />
+      <div class="flex gap-4">
+        <input
+          type="text"
+          class="p-2 rounded-lg"
+          placeholder="Type a todo"
+          [(ngModel)]="todoValue"
+          (keyup.enter)="addItem()"
+        />
+        <button
+          class="bg-purple-600 text-white p-2 rounded-lg"
+          (click)="addItem()"
+        >
+          Add Todo
+        </button>
+      </div>
+
+      <div class="list mt-4">
+        <ul>
+          <li
+            *ngFor="let item of todo"
+            class="bg-white text-black p-2 rounded-lg mb-2 flex items-center justify-between"
+          >
+            <input
+              type="checkbox"
+              name="isDone"
+              [(ngModel)]="item.isDone"
+              class="mr-4"
+            />
+            <span class="flex-grow text-slate-600">{{ item.value }}</span>
+            <button
+              class="bg-red-500 text-white uppercase px-4 py-2 rounded-lg"
+              (click)="deleteItem(item.id)"
+            >
+              Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
