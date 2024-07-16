@@ -14,7 +14,7 @@ import { RouterModule } from "@angular/router";
 })
 export class HomeComponent {
   todoValue: string = "";
-  todo: Todo[] = [];
+  todos: Todo[] = [];
 
   addItem(){
     if(this.todoValue !== "") {
@@ -23,14 +23,25 @@ export class HomeComponent {
         value: this.todoValue,
         isDone: false
       };
-      this.todo.push(newItem);
-      localStorage.setItem('todo', JSON.stringify(this.todo));
+      this.todos.push(newItem);
+      localStorage.setItem('todo', JSON.stringify(this.todos));
     }
     this.todoValue = "";
   }
 
+  isDone(id: number) {
+    console.log(id);
+    
+    let doneTodo = this.todos.find(todo => todo.id === id);
+    if (doneTodo) {
+      doneTodo.isDone = true;
+    }
+    localStorage.setItem('todo', JSON.stringify(this.todos));
+  }
+  
+
   deleteItem(id: number){
-    this.todo = this.todo.filter(item => item.id !== id);
-    localStorage.setItem('todo', JSON.stringify(this.todo));
+    this.todos = this.todos.filter(item => item.id !== id);
+    localStorage.setItem('todo', JSON.stringify(this.todos));
   }
 }

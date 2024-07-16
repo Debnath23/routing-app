@@ -19,6 +19,14 @@ export class SecondComponent {
     localStorage.setItem('todo', JSON.stringify(this.todos));
   }
 
+  isDone(id: number) {
+    let doneTodo = this.todos.find(todo => todo.id === id);
+    if (doneTodo) {
+      doneTodo.isDone = true;
+    }
+    localStorage.setItem('todo', JSON.stringify(this.todos));
+  }
+
   get doneTodos(): Todo[] {
     return this.todos = this.todos.filter(todo => todo.isDone);
   }

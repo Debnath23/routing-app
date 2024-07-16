@@ -26,15 +26,25 @@
       <div class="list mt-4">
         <ul>
           <li
-            *ngFor="let item of todo"
+            *ngFor="let item of todos"
             class="bg-white text-black p-2 rounded-lg mb-2 flex items-center justify-between"
           >
-            <input
+            <!-- <input
               type="checkbox"
               name="isDone"
               [(ngModel)]="item.isDone"
+              ()="isDone(item.id)"
               class="mr-4"
-            />
+            /> -->
+
+            <button
+              name="isDone"
+              [(ngModel)]="item.isDone"
+              class="bg-red-300 text-white uppercase px-4 py-2 rounded-lg"
+              (click)="isDone(item.id)"
+            >
+              Check
+            </button>
             <span class="flex-grow text-slate-600">{{ item.value }}</span>
             <button
               class="bg-red-500 text-white uppercase px-4 py-2 rounded-lg"
